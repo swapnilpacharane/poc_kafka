@@ -83,7 +83,7 @@ def watch_mongoDB_Discovery(MongoDB_URL, SKU_ID):
 
 def publish_kafka(message_body):
     from kafka import KafkaProducer
-    bootstrap_servers = ['kafka:29092']
+    bootstrap_servers = ['172.23.132.61:29092']
     topicName = 'myFirstTopic'
     producer = KafkaProducer(bootstrap_servers = bootstrap_servers, retries = 5,value_serializer=lambda m: json.dumps(m).encode('ascii'))
     producer = KafkaProducer()    
@@ -96,7 +96,7 @@ def publish_kafka(message_body):
 def consume_kafka(message_body):
     from kafka import KafkaConsumer
     import sys
-    bootstrap_servers = ['kafka:29092']
+    bootstrap_servers = ['172.23.132.61:9092']
     topicName = 'myFirstTopic1'
     consumer = KafkaConsumer (topicName, group_id = 'group1',bootstrap_servers = bootstrap_servers,
     auto_offset_reset = 'earliest')
